@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container mt-5">
+    <form method="POST" action="/login" class="mb-4">
+        <div class="mb-3">
+            <label for="phone_number" class="form-label">Telefon:</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" required value="{{ phone_number }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Wyślij kod</button>
+        {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+        {% if otp_code %}
+        <div class="alert alert-info mt-3">Twój kod: <b>{{ otp_code }}</b></div>
+        {% endif %}
+    </form>
+</section>  
+
+<section class="container">
+    <form method="POST" action="/verify">
+        <input type="text" id="phone_number" name="phone_number" value="{{ phone_number }}" hidden>
+        <div class="mb-3">
+            <label for="code" class="form-label">Jednorazowy kod:</label>
+            <input type="text" class="form-control" id="code" name="code" required>  
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+</section>
+
+{% endblock %}

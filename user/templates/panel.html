@@ -1,0 +1,10 @@
+{% extends 'user_base.html'%}
+
+{% block title %}User Panel{% endblock %}
+
+{% block content %}
+<section>
+    {{ current_user.points }} punktów
+    <p>Welcome to your user panel. Here you can manage your settings and preferences.</p>
+</section>
+{% endblock %}
